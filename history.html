@@ -2,35 +2,56 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>History Monitoring Sampah</title>
 
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header>
-  <h2>📊 History & Grafik</h2>
+  <h2>📊 History & Grafik Monitoring Sampah</h2>
   <a href="index.html" class="btn-history">⬅ Dashboard</a>
 </header>
 
 <div class="container">
-  <canvas id="sampahChart"></canvas>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Waktu</th>
-        <th>Persentase</th>
-        <th>Status</th>
-        <th>Bau</th>
-      </tr>
-    </thead>
-    <tbody id="historyTable"></tbody>
-  </table>
+  <!-- GRAFIK -->
+  <div class="chart-wrapper">
+    <div class="chart-box">
+      <h3>🗑️ Persentase Sampah</h3>
+      <canvas id="sampahChart"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <h3>💨 Tingkat Bau (MQ-135)</h3>
+      <canvas id="bauChart"></canvas>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Waktu</th>
+          <th>Persentase</th>
+          <th>Status</th>
+          <th>Bau</th>
+        </tr>
+      </thead>
+      <tbody id="historyTable"></tbody>
+    </table>
+  </div>
+
 </div>
 
 <script src="history.js"></script>

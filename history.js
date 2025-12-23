@@ -1,3 +1,4 @@
+// ================= FIREBASE CONFIG =================
 var firebaseConfig = {
   databaseURL: "https://monitoring-sampah-4dffe-default-rtdb.firebaseio.com",
 };
@@ -6,31 +7,92 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
 var historyRef = db.ref("history");
 
+// ================= DATA =================
 var labels = [];
-var values = [];
+var sampahData = [];
+var bauData = [];
 
-var ctx = document.getElementById("sampahChart").getContext("2d");
-var chart = new Chart(ctx, {
+// ================= BAU KE ANGKA =================
+function bauKeAngka(bau) {
+  if (bau === "NORMAL") return 1;
+  if (bau === "SEDANG") return 2;
+  if (bau === "MENYENGAT") return 3;
+  return 0;
+}
+
+// ================= CHART SAMPAH =================
+var ctxSampah = document.getElementById("sampahChart").getContext("2d");
+var sampahChart = new Chart(ctxSampah, {
   type: "line",
   data: {
     labels: labels,
     datasets: [{
       label: "Persentase Sampah (%)",
-      data: values,
+      data: sampahData,
       borderColor: "#43cea2",
+      backgroundColor: "rgba(67,206,162,0.15)",
       tension: 0.3,
-      fill: false
+      fill: true
     }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: { min: 0, max: 100 }
+    }
   }
 });
 
+// ================= CHART BAU =================
+var ctxBau = document.getElementById("bauChart").getContext("2d");
+var bauChart = new Chart(ctxBau, {
+  type: "line",
+  data: {
+    labels: labels,
+    datasets: [{
+      label: "Tingkat Bau",
+      data: bauData,
+      borderColor: "#ff6b6b",
+      backgroundColor: "rgba(255,107,107,0.15)",
+      tension: 0.3,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        min: 0,
+        max: 3,
+        ticks: {
+          callback: function (value) {
+            if (value === 1) return "NORMAL";
+            if (value === 2) return "SEDANG";
+            if (value === 3) return "MENYENGAT";
+            return "";
+          }
+        }
+      }
+    }
+  }
+});
+
+// ================= FIREBASE LISTENER =================
 historyRef.limitToLast(10).on("child_added", function (snap) {
   var data = snap.val();
 
-  labels.push(new Date(data.waktu).toLocaleTimeString());
-  values.push(data.persentase);
-  chart.update();
+  var waktu = new Date(data.waktu).toLocaleTimeString();
 
+  labels.push(waktu);
+  sampahData.push(data.persentase);
+  bauData.push(bauKeAngka(data.bau));
+
+  sampahChart.update();
+  bauChart.update();
+
+  // ================= TABLE =================
   var row = `
     <tr>
       <td>${new Date(data.waktu).toLocaleString()}</td>
