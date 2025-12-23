@@ -1,0 +1,165 @@
+/* ================= GLOBAL ================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* ================= HEADER ================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  color: white;
+}
+
+header h2 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.btn-history {
+  background: white;
+  color: #185a9d;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-history:hover {
+  background: #e3f2fd;
+}
+
+/* ================= DASHBOARD CARD ================= */
+.card {
+  background: white;
+  width: 340px;
+  margin: 70px auto;
+  border-radius: 25px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.percentage {
+  font-size: 72px;
+  font-weight: bold;
+  color: #43cea2;
+  margin-bottom: 10px;
+}
+
+/* ================= STATUS ================= */
+.status,
+.bau {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 15px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Sampah */
+.kosong {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.sedang {
+  background: linear-gradient(135deg, #f1c40f, #f39c12);
+  color: #333;
+}
+
+.penuh {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* Bau */
+.normal {
+  background: linear-gradient(135deg, #2ecc71, #1abc9c);
+}
+
+.menyengat {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* ================= INFO ================= */
+.info {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+}
+
+/* ================= HISTORY PAGE ================= */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+canvas {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ================= TABLE ================= */
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+th {
+  background: #185a9d;
+  color: white;
+  padding: 14px;
+  text-align: center;
+}
+
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+  background: #f5faff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

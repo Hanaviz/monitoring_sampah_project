@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>History Monitoring Sampah</title>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h2>📊 History & Grafik</h2>
+  <a href="index.html" class="btn-history">⬅ Dashboard</a>
+</header>
+
+<div class="container">
+  <canvas id="sampahChart"></canvas>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Waktu</th>
+        <th>Persentase</th>
+        <th>Status</th>
+        <th>Bau</th>
+      </tr>
+    </thead>
+    <tbody id="historyTable"></tbody>
+  </table>
+</div>
+
+<script src="history.js"></script>
+</body>
+</html>

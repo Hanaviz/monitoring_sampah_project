@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Monitoring Sampah</title>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h2>🗑️ Monitoring Sampah</h2>
+  <a href="history.html" class="btn-history">📊 History</a>
+</header>
+
+<div class="card">
+  <div id="percentage" class="percentage">0%</div>
+
+  <div id="status" class="status kosong">KOSONG</div>
+
+  <div id="bau" class="bau normal">BAU: NORMAL</div>
+
+  <div class="info">
+    Update Terakhir:<br />
+    <span id="lastUpdate">-</span>
+  </div>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
